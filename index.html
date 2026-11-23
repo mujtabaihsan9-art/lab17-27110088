@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F6F4EE">
+  <meta name="description" content="Living miniature ecosystems, curated for modern Pakistani homes. Discover hand-built terrariums and thoughtful care from Moss & Micro.">
+  <title>Moss &amp; Micro — Living miniature ecosystems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --parchment: #F6F4EE;
+      --surface: #ECE7DC;
+      --moss: #2C4230;
+      --charcoal: #1E241F;
+      --muted: #5A645B;
+      --terracotta: #A65D3F;
+      --line: rgba(44, 66, 48, 0.16);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Plus Jakarta Sans", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--parchment);
+      color: var(--charcoal);
+      font: 400 15px/1.65 var(--sans);
+    }
+
+    a { color: inherit; }
+
+    button, input, select { font: inherit; }
+
+    .page-shell { overflow: hidden; }
+
+    .announcement {
+      padding: 8px 20px;
+      background: var(--moss);
+      color: #F6F4EE;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.09em;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      width: min(1240px, calc(100% - 64px));
+      min-height: 88px;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--moss);
+      text-decoration: none;
+    }
+
+    .wordmark-mark {
+      display: grid;
+      width: 39px;
+      height: 39px;
+      place-items: center;
+      border: 1px solid rgba(44, 66, 48, 0.35);
+      border-radius: 50%;
+    }
+
+    .wordmark-mark svg { width: 22px; height: 22px; }
+
+    .wordmark-name {
+      font: 600 19px/1 var(--serif);
+      letter-spacing: -0.035em;
+    }
+
+    .wordmark-name span { color: var(--terracotta); }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 37px;
+    }
+
+    .main-nav a {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    .main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--moss); }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border: 1px solid var(--moss);
+      border-radius: 2px;
+      color: var(--moss) !important;
+    }
+
+    .hero {
+      display: grid;
+      width: min(1240px, calc(100% - 64px));
+      min-height: 590px;
+      margin: 0 auto;
+      padding: 48px 0 58px;
+      grid-template-columns: 0.92fr 1.08fr;
+      align-items: center;
+      gap: 7.5%;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 22px;
+      color: var(--terracotta);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 27px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
+
+    h1 {
+      max-width: 500px;
+      margin-bottom: 22px;
+      font-size: clamp(48px, 6.1vw, 78px);
+      letter-spacing: -0.055em;
+      line-height: 1.05;
+    }
+
+    h1 em { color: var(--moss); font-weight: 500; }
+
+    .hero-copy {
+      max-width: 435px;
+      margin-bottom: 29px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 23px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 49px;
+      padding: 0 22px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--moss);
+      border-radius: 2px;
+      background: var(--moss);
+      color: var(--parchment);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.045em;
+      text-decoration: none;
+      transition: background 160ms ease, color 160ms ease;
+      cursor: pointer;
+    }
+
+    .button:hover { background: transparent; color: var(--moss); }
+
+    .text-link {
+      color: var(--moss);
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .text-link span { padding-left: 5px; color: var(--terracotta); }
+
+    .hero-visual {
+      position: relative;
+      min-height: 445px;
+      background: #d7ddcb;
+    }
+
+    .hero-visual img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 54%;
+    }
+
+    .hero-note {
+      position: absolute;
+      right: -24px;
+      bottom: 25px;
+      width: 188px;
+      padding: 17px 19px 16px;
+      background: var(--parchment);
+      box-shadow: 0 8px 28px rgba(30, 36, 31, 0.08);
+    }
+
+    .hero-note small {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--terracotta);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .hero-note strong {
+      color: var(--moss);
+      font: 500 17px/1.35 var(--serif);
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 37px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .trust-row span { display: flex; align-items: center; gap: 7px; }
+
+    .trust-row span::before {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      content: "";
+    }
+
+    .section {
+      padding: 92px max(32px, calc((100% - 1240px) / 2));
+    }
+
+    .collection { background: var(--surface); }
+
+    .section-heading {
+      display: flex;
+      margin-bottom: 35px;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .section-heading .eyebrow { margin-bottom: 11px; }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(35px, 4vw, 50px);
+      letter-spacing: -0.045em;
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      max-width: 340px;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px 22px;
+    }
+
+    .product-card {
+      min-width: 0;
+      background: var(--parchment);
+    }
+
+    .product-image {
+      position: relative;
+      height: 245px;
+      overflow: hidden;
+      background: #d9dece;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 450ms ease;
+    }
+
+    .product-card:hover .product-image img { transform: scale(1.035); }
+
+    .product-image--duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--parchment);
+    }
+
+    .pet-photo {
+      position: relative;
+      min-width: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #d9dece;
+    }
+
+    .image-credit {
+      position: absolute;
+      right: 7px;
+      bottom: 7px;
+      left: 7px;
+      width: max-content;
+      max-width: calc(100% - 14px);
+      padding: 3px 5px;
+      background: rgba(246, 244, 238, 0.92);
+      color: var(--muted);
+      font: 500 8px/1.35 var(--sans);
+    }
+
+    .image-credit a { color: inherit; text-decoration: none; }
+    .image-credit a:hover { color: var(--moss); text-decoration: underline; }
+
+    .product-kind {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      padding: 6px 9px;
+      background: rgba(246, 244, 238, 0.92);
+      color: var(--moss);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .product-details { padding: 18px 19px 20px; }
+
+    .product-title-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .product-title-line h3 {
+      margin-bottom: 6px;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+    }
+
+    .product-price {
+      flex: 0 0 auto;
+      color: var(--moss);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .product-description {
+      min-height: 42px;
+      margin-bottom: 15px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.75;
+    }
+
+    .product-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 7px 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .difficulty { color: var(--moss); font-weight: 700; }
+
+    .maker-note {
+      display: flex;
+      margin-top: 40px;
+      padding: 19px 22px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border: 1px solid rgba(44, 66, 48, 0.22);
+    }
+
+    .maker-note p { margin: 0; color: var(--muted); font-size: 11px; }
+    .maker-note strong { color: var(--moss); font-weight: 700; }
+
+    .calculator-section {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 9%;
+    }
+
+    .calculator-section .section-copy { max-width: 440px; }
+
+    .section-copy .eyebrow { margin-bottom: 13px; }
+
+    .section-copy h2 { margin-bottom: 18px; }
+
+    .section-copy > p:last-child {
+      max-width: 420px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .calculator {
+      padding: 29px;
+      border: 1px solid var(--line);
+      background: #F9F8F3;
+    }
+
+    .calculator h3 {
+      margin-bottom: 21px;
+      color: var(--moss);
+      font-size: 23px;
+    }
+
+    .form-field { margin-bottom: 17px; }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--charcoal);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .form-field select, .form-field input {
+      display: block;
+      width: 100%;
+      min-height: 46px;
+      padding: 0 12px;
+      border: 1px solid rgba(44, 66, 48, 0.24);
+      border-radius: 1px;
+      outline: none;
+      background: var(--parchment);
+      color: var(--charcoal);
+      font-size: 12px;
+    }
+
+    .form-field output {
+      display: flex;
+      min-height: 46px;
+      padding: 0 12px;
+      align-items: center;
+      border: 1px solid rgba(44, 66, 48, 0.24);
+      color: var(--moss);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .form-field select:focus, .form-field input:focus {
+      border-color: var(--moss);
+      box-shadow: 0 0 0 2px rgba(44, 66, 48, 0.1);
+    }
+
+    .calculator-row {
+      display: grid;
+      grid-template-columns: 1fr 120px;
+      gap: 15px;
+    }
+
+    .total-row {
+      display: flex;
+      margin: 6px 0 19px;
+      padding-top: 16px;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+    }
+
+    .total-row span { color: var(--muted); font-size: 11px; }
+    .total-row output { color: var(--moss); font-size: 21px; font-weight: 700; }
+    .calculator .button { width: 100%; }
+
+    .form-message {
+      min-height: 20px;
+      margin: 10px 0 0;
+      color: var(--moss);
+      font-size: 10px;
+    }
+
+    .form-message.is-error { color: var(--terracotta); }
+
+    .care-strip {
+      display: grid;
+      padding: 68px max(32px, calc((100% - 1240px) / 2));
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      background: var(--moss);
+      color: var(--parchment);
+    }
+
+    .care-item { display: flex; gap: 16px; }
+
+    .care-icon {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(246, 244, 238, 0.4);
+      border-radius: 50%;
+      color: #E8B49A;
+      font: 500 16px var(--serif);
+    }
+
+    .care-item h3 { margin: 1px 0 6px; font-size: 17px; }
+    .care-item p { margin: 0; color: rgba(246, 244, 238, 0.73); font-size: 10px; line-height: 1.8; }
+
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      align-items: center;
+      gap: 10%;
+    }
+
+    .contact-section .section-copy { max-width: 470px; }
+
+    .contact-form {
+      padding: 26px;
+      background: var(--surface);
+    }
+
+    .contact-form h3 { margin-bottom: 6px; font-size: 22px; }
+    .contact-form > p { margin-bottom: 20px; color: var(--muted); font-size: 10px; }
+    .contact-form .button { width: 100%; }
+
+    .site-footer {
+      padding: 39px max(32px, calc((100% - 1240px) / 2)) 22px;
+      background: #E9E6DC;
+    }
+
+    .footer-main {
+      display: flex;
+      padding-bottom: 27px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .footer-note { margin: 0; color: var(--muted); font-size: 10px; }
+    .footer-links { display: flex; gap: 22px; }
+    .footer-links a { color: var(--moss); font-size: 10px; font-weight: 600; text-decoration: none; }
+    .footer-bottom { display: flex; padding-top: 17px; justify-content: space-between; gap: 15px; color: var(--muted); font-size: 9px; }
+
+    @media (max-width: 850px) {
+      .hero { gap: 5%; }
+      .hero-visual { min-height: 390px; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .care-strip { gap: 22px; }
+    }
+
+    @media (max-width: 650px) {
+      .announcement { font-size: 9px; }
+      .site-header { width: calc(100% - 36px); min-height: 73px; }
+      .wordmark-name { font-size: 17px; }
+      .wordmark-mark { width: 34px; height: 34px; }
+      .main-nav { gap: 16px; }
+      .main-nav a { font-size: 10px; }
+      .nav-cta { display: none; }
+      .hero {
+        width: calc(100% - 40px);
+        padding: 48px 0 54px;
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+      h1 { max-width: 460px; font-size: clamp(48px, 13vw, 68px); }
+      .hero-visual { min-height: min(105vw, 430px); }
+      .hero-note { right: -8px; bottom: 15px; }
+      .trust-row { margin-top: 25px; gap: 12px 17px; }
+      .section { padding: 67px 20px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 14px; }
+      .product-grid { gap: 16px; }
+      .product-image { height: 190px; }
+      .product-details { padding: 14px 13px 15px; }
+      .product-title-line { align-items: start; flex-direction: column; gap: 0; }
+      .product-title-line h3 { font-size: 18px; }
+      .product-description { min-height: 54px; font-size: 10px; }
+      .product-meta { font-size: 8px; }
+      .maker-note { align-items: start; flex-direction: column; }
+      .calculator-section, .contact-section { grid-template-columns: 1fr; gap: 30px; }
+      .calculator { padding: 22px 18px; }
+      .care-strip { padding: 47px 24px; grid-template-columns: 1fr; gap: 24px; }
+      .site-footer { padding: 32px 20px 18px; }
+    }
+
+    @media (max-width: 390px) {
+      .main-nav { gap: 11px; }
+      .main-nav a { font-size: 9px; }
+      .product-image { height: 160px; }
+      .calculator-row { grid-template-columns: 1fr 95px; gap: 9px; }
+      .footer-main, .footer-bottom { align-items: start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="announcement">Complimentary care card with every ecosystem · Hand-delivered across Lahore &amp; Islamabad</div>
+
+    <header class="site-header">
+      <a class="wordmark" href="index.html" aria-label="Moss & Micro home">
+        <span class="wordmark-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 20V10m0 5c0-4-2.7-6.1-6-6.6.1 3.8 2.2 6.6 6 6.6Zm0-3.1c.2-3.5 2.4-5.8 6.1-6.2-.2 3.8-2.4 6.2-6.1 6.2Z" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="wordmark-name">Moss <span>&amp;</span> Micro</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="catalog.html">Ecosystems</a>
+        <a href="care.html">Care Guide</a>
+        <a class="nav-cta" href="#contact">Enquire</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">A little world, made by hand</p>
+          <h1 id="hero-title">A quieter kind of <em>green.</em></h1>
+          <p class="hero-copy">Living miniature ecosystems, curated for modern Pakistani homes. Discover considered terrariums and tiny caretakers, each made slowly and designed to thrive.</p>
+          <div class="hero-actions">
+            <a class="button" href="#collection">Explore the collection</a>
+            <a class="text-link" href="#care">A note on care <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="trust-row" aria-label="Our approach">
+            <span>Built by hand</span>
+            <span>Thoughtful sourcing</span>
+            <span>Care made simple</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="Sunlit green plants in a calm, natural interior" fetchpriority="high">
+          <div class="hero-note">
+            <small>Small by nature</small>
+            <strong>Made for the spaces we call home.</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="section collection" id="collection" aria-labelledby="collection-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">The collection</p>
+            <h2 id="collection-title">Find your small wild.</h2>
+          </div>
+          <p class="section-intro">Explore closed glass gardens, beneficial micro-fauna, natural hardscape, living moss, considered plants and habitats for small pets.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Bioglobes_-_MUSE.jpg/960px-Bioglobes_-_MUSE.jpg" alt="Two closed, cork-topped glass terrariums with miniature plants" loading="lazy">
+              <span class="product-kind">Full terrariums</span>
+              <small class="image-credit"><a href="https://commons.wikimedia.org/wiki/File:Bioglobes_-_MUSE.jpg" target="_blank" rel="noreferrer">Photo: MUSE</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noreferrer">CC BY-SA 3.0</a></small>
+            </div>
+            <div class="product-details">
+              <div class="product-title-line"><h3>Full Terrariums</h3><span class="product-price">PKR 22,000</span></div>
+              <p class="product-description">Complete, closed glass gardens layered with moss, miniature foliage and natural stone.</p>
+              <div class="product-meta"><span>22 × 18 cm</span><span class="difficulty">Care · Easy</span></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Trichorhina_tomentosa1.jpg/960px-Trichorhina_tomentosa1.jpg" alt="Dwarf white isopod on dark natural substrate" loading="lazy">
+              <span class="product-kind">Micro fauna</span>
+              <small class="image-credit"><a href="https://commons.wikimedia.org/wiki/File:Trichorhina_tomentosa1.jpg" target="_blank" rel="noreferrer">Photo: Bianca Laskowska</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a></small>
+            </div>
+            <div class="product-details">
+              <div class="product-title-line"><h3>Micro Fauna</h3><span class="product-price">PKR 7,500</span></div>
+              <p class="product-description">Springtails and dwarf white isopods, raised to support balanced bioactive enclosures.</p>
+              <div class="product-meta"><span>Culture tub · 8 × 6 cm</span><span class="difficulty">Care · Easy</span></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Terrarium_with_Cactus_and_Aloevera_by_RJ_Raawat.jpg/960px-Terrarium_with_Cactus_and_Aloevera_by_RJ_Raawat.jpg" alt="Layered gravel, natural stones and a feature rock arranged in a glass terrarium" loading="lazy">
+              <span class="product-kind">Hardscape</span>
+              <small class="image-credit"><a href="https://commons.wikimedia.org/wiki/File:Terrarium_with_Cactus_and_Aloevera_by_RJ_Raawat.jpg" target="_blank" rel="noreferrer">Photo: RJ Raawat</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a></small>
+            </div>
+            <div class="product-details">
+              <div class="product-title-line"><h3>Hardscape</h3><span class="product-price">PKR 8,500</span></div>
+              <p class="product-description">A hand-selected mix of stone, cork bark and branch to shape your own small landscape.</p>
+              <div class="product-meta"><span>Set tray · 18 × 14 cm</span><span class="difficulty">Care · Easy</span></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Moss_Close-up_-_geograph.org.uk_-_2757596.jpg" alt="Dense cushion moss in a soft, natural green" loading="lazy">
+              <span class="product-kind">Moss</span>
+              <small class="image-credit"><a href="https://commons.wikimedia.org/wiki/File:Moss_Close-up_-_geograph.org.uk_-_2757596.jpg" target="_blank" rel="noreferrer">Photo: Christine Westerback</a> · <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank" rel="noreferrer">CC BY-SA 2.0</a></small>
+            </div>
+            <div class="product-details">
+              <div class="product-title-line"><h3>Moss</h3><span class="product-price">PKR 5,500</span></div>
+              <p class="product-description">Soft, humidity-loving moss selected to bring gentle texture to a terrarium floor.</p>
+              <div class="product-meta"><span>Living mat · 12 × 10 cm</span><span class="difficulty">Care · Easy</span></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&amp;fit=crop&amp;w=800&amp;q=82" alt="Fresh green foliage in bright natural light" loading="lazy">
+              <span class="product-kind">Plants</span>
+            </div>
+            <div class="product-details">
+              <div class="product-title-line"><h3>Plants</h3><span class="product-price">PKR 6,500</span></div>
+              <p class="product-description">A small selection of fittonia, ferns and other humidity-loving foliage for miniature gardens.</p>
+              <div class="product-meta"><span>Nursery pots · 8–12 cm</span><span class="difficulty">Care · Moderate</span></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image product-image--duo">
+              <div class="pet-photo">
+                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/A_Leopard_Gecko_laying_on_piece_of_wood.jpg/960px-A_Leopard_Gecko_laying_on_piece_of_wood.jpg" alt="Leopard gecko resting on a branch" loading="lazy">
+                <small class="image-credit"><a href="https://commons.wikimedia.org/wiki/File:A_Leopard_Gecko_laying_on_piece_of_wood.jpg" target="_blank" rel="noreferrer">Leopard gecko · Matthew Johnson</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a></small>
+              </div>
+              <div class="pet-photo">
+                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Phidippus_regius_female_01.jpg/960px-Phidippus_regius_female_01.jpg" alt="Regal jumping spider on a leaf" loading="lazy">
+                <small class="image-credit"><a href="https://commons.wikimedia.org/wiki/File:Phidippus_regius_female_01.jpg" target="_blank" rel="noreferrer">Jumping spider · Nosferattus</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noreferrer">CC0</a></small>
+              </div>
+              <span class="product-kind">Small pets</span>
+            </div>
+            <div class="product-details">
+              <div class="product-title-line"><h3>Small Pets</h3><span class="product-price">From PKR 9,500</span></div>
+              <p class="product-description">Species-specific habitats and thoughtful setup guidance for jumping spiders and leopard geckos.</p>
+              <div class="product-meta"><span>Spider · 20 × 20 × 30 cm · Gecko · 90 × 45 × 45 cm</span><span class="difficulty">Care · Specialist</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="maker-note">
+          <p><strong>Carefully selected, never mass-produced.</strong> Every order is packed with a simple care card.</p>
+          <a class="text-link" href="catalog.html">View all ecosystems <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="section calculator-section" aria-labelledby="calculator-title">
+        <div class="section-copy">
+          <p class="eyebrow">A considered estimate</p>
+          <h2 id="calculator-title">Plan your little world.</h2>
+          <p>Choose a category and quantity to see an instant estimate. For custom arrangements or gifting, send us a note and we will help you find the right fit.</p>
+        </div>
+        <form class="calculator" id="price-calculator">
+          <h3>Your estimate</h3>
+          <div class="form-field">
+            <label for="product-choice">Choose a category</label>
+            <select id="product-choice" name="product">
+              <option value="22000">Full Terrariums — PKR 22,000</option>
+              <option value="7500">Micro Fauna — PKR 7,500</option>
+              <option value="8500">Hardscape — PKR 8,500</option>
+              <option value="5500">Moss — PKR 5,500</option>
+              <option value="6500">Plants — PKR 6,500</option>
+              <option value="9500">Small Pets — from PKR 9,500</option>
+            </select>
+          </div>
+          <div class="calculator-row">
+            <div class="form-field">
+              <label for="quantity">Quantity</label>
+              <input id="quantity" name="quantity" type="number" min="1" max="10" value="1" inputmode="numeric">
+            </div>
+            <div class="form-field">
+              <label for="estimate-total">Estimate</label>
+              <output id="estimate-total" for="product-choice quantity" aria-live="polite">PKR 22,000</output>
+            </div>
+          </div>
+          <p class="form-message" id="calculator-message" aria-live="polite"></p>
+          <a class="button" href="#contact">Enquire about this selection</a>
+        </form>
+      </section>
+
+      <section class="care-strip" id="care" aria-label="A few simple care notes">
+        <article class="care-item">
+          <span class="care-icon" aria-hidden="true">01</span>
+          <div><h3>Gentle, indirect light</h3><p>A bright room is lovely; direct afternoon sun is not. Keep glass gardens away from hot windowsills.</p></div>
+        </article>
+        <article class="care-item">
+          <span class="care-icon" aria-hidden="true">02</span>
+          <div><h3>Water with a light hand</h3><p>Closed terrariums recycle moisture. Open arrangements prefer a little more attention; your care card has the details.</p></div>
+        </article>
+        <article class="care-item">
+          <span class="care-icon" aria-hidden="true">03</span>
+          <div><h3>Room to settle in</h3><p>Allow your ecosystem a few days to acclimatise. We are here if you need a little guidance along the way.</p></div>
+        </article>
+      </section>
+
+      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="section-copy">
+          <p class="eyebrow">A note from you</p>
+          <h2 id="contact-title">Let’s find your fit.</h2>
+          <p>Tell us what you have in mind. Leave your Pakistani mobile number and our studio will be in touch to help with a selection, a gift, or a care question.</p>
+        </div>
+        <form class="contact-form" id="enquiry-form" novalidate>
+          <h3>Request a call back</h3>
+          <p>We will only use your number to respond to this enquiry.</p>
+          <div class="form-field">
+            <label for="customer-name">Your name</label>
+            <input id="customer-name" name="name" type="text" autocomplete="name" placeholder="How should we address you?" required>
+          </div>
+          <div class="form-field">
+            <label for="phone-number">Pakistani mobile number</label>
+            <input id="phone-number" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="03XX XXXXXXX" maxlength="14" aria-describedby="phone-hint phone-message" required>
+            <small id="phone-hint" style="display:block;margin-top:6px;color:var(--muted);font-size:9px">Enter 11 digits, for example 0300 1234567.</small>
+          </div>
+          <button class="button" type="submit">Request a call back</button>
+          <p class="form-message" id="phone-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-main">
+        <a class="wordmark" href="index.html" aria-label="Moss & Micro home">
+          <span class="wordmark-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 20V10m0 5c0-4-2.7-6.1-6-6.6.1 3.8 2.2 6.6 6 6.6Zm0-3.1c.2-3.5 2.4-5.8 6.1-6.2-.2 3.8-2.4 6.2-6.1 6.2Z" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="wordmark-name">Moss <span>&amp;</span> Micro</span>
+        </a>
+        <p class="footer-note">Lahore &amp; Islamabad courier delivery · Made thoughtfully in Pakistan</p>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="catalog.html">Ecosystems</a>
+          <a href="care.html">Care Guide</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>Living miniature ecosystems, curated for modern Pakistani homes.</span>
+        <span>© <span id="current-year">2026</span> Moss &amp; Micro</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const productChoice = document.getElementById("product-choice");
+    const quantityInput = document.getElementById("quantity");
+    const estimateTotal = document.getElementById("estimate-total");
+    const calculatorMessage = document.getElementById("calculator-message");
+
+    function updateEstimate() {
+      const quantity = Number(quantityInput.value);
+      const unitPrice = Number(productChoice.value);
+      if (!Number.isInteger(quantity) || quantity < 1 || quantity > 10) {
+        calculatorMessage.textContent = "Please choose a quantity between 1 and 10.";
+        calculatorMessage.classList.add("is-error");
+        estimateTotal.textContent = "—";
+        return;
+      }
+      calculatorMessage.textContent = "";
+      calculatorMessage.classList.remove("is-error");
+      estimateTotal.textContent = `PKR ${(unitPrice * quantity).toLocaleString("en-PK")}`;
+    }
+
+    productChoice.addEventListener("change", updateEstimate);
+    quantityInput.addEventListener("input", updateEstimate);
+
+    const enquiryForm = document.getElementById("enquiry-form");
+    const phoneInput = document.getElementById("phone-number");
+    const phoneMessage = document.getElementById("phone-message");
+
+    enquiryForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = document.getElementById("customer-name").value.trim();
+      const digits = phoneInput.value.replace(/\D/g, "");
+      phoneMessage.classList.remove("is-error");
+
+      if (!name) {
+        phoneMessage.textContent = "Please enter your name.";
+        phoneMessage.classList.add("is-error");
+        document.getElementById("customer-name").focus();
+        return;
+      }
+      if (!/^\d{11}$/.test(digits)) {
+        phoneMessage.textContent = "Please enter a valid Pakistani mobile number with exactly 11 digits.";
+        phoneMessage.classList.add("is-error");
+        phoneInput.focus();
+        return;
+      }
+      phoneMessage.textContent = "Your number is valid. This form is not connected to an enquiry service yet.";
+      enquiryForm.reset();
+    });
+
+    document.getElementById("current-year").textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
